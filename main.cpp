@@ -1,7 +1,7 @@
 /*
  * Name: Geno Brown, Sudoku Solver
  * Description: Given initial positions in a soduko board,
- * finds the solution to the board.
+ * finds the solution to the board using backtracking.
  * Input: Takes input for the coordinates of initial numbers in the board
  * Output: Outputs the filled board or the board being filled.
  */
@@ -42,7 +42,14 @@ int main()
             board[i][j] = 0;
 
     //setting the board
-    /*
+    string input;
+    int row, col, val, oldVal;
+
+    cout << "Enter your own values? (y/n): ";
+    cin >> input;
+    
+    if (input != "y")
+    {
     board[0][1] = 6;
     board[0][3] = 3;
     board[0][6] = 8;
@@ -86,14 +93,8 @@ int main()
     board[8][2] = 2;
     board[8][5] = 9;
     board[8][7] = 8;
-    */
-
-    string input;
-    int row, col, val, oldVal;
-
-    cout << "Enter your own values? (y/n): ";
-    cin >> input;
-
+    }
+    
     while (input == "y")
     {
         printBoard(board);
@@ -129,7 +130,7 @@ int main()
         cout << "Enter another value? (y/n): ";
         cin >> input;
     }
-
+    
     printBoard(board);
 
     if (isValidBoard(board))
@@ -309,7 +310,7 @@ bool findUnsetLocation(int arr[][N], int& row, int& col)
 
 /*
  * function_identifier: solveBoard
- * recursive function solves the board from the first row
+ * recursive back tracking function solves the board from the first row
  * parameters: int arr[][N], int row, int initQ
  * return value: bool
  */
